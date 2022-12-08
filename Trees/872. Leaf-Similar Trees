@@ -1,0 +1,39 @@
+/*This question is about the comparing leaves sequences 
+  ->if both the trees leaves sequences are same then we should return true or else false
+  ->we use recursion(dfs) in order to traverse the tree left to right and store them in a list
+  ->After traversing to the both trees we just compare the list
+*/
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public void storeLeaves(List<Integer> list,TreeNode root){
+        if(root == null) return;
+        if(root.left == null && root.right == null){
+            list.add(root.val);
+        }
+        storeLeaves(list,root.left);
+        storeLeaves(list,root.right);
+        return;
+    }
+    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+        storeLeaves(list1,root1);
+        storeLeaves(list2,root2);
+        return list1.equals(list2);
+    }
+}
