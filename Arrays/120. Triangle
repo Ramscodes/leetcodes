@@ -1,0 +1,24 @@
+//Link to leetcode - https://leetcode.com/problems/triangle/description/
+/*This is a problem where we need to find out the min path from top to bottom 
+ *Here in the given below solution we traced the path through BOTTOM UP approach 
+ *  where we reverse the triangle and add the min of two numbers above the current row.
+ *By the end of the calculations , we will get the min path and min sum in 
+ *  the first element and first array.
+ */
+//There is TOP DOWN approach where we can add the above element to the below element
+/*If we don't want to change the existing given array then we can just take the 
+ * another array of length array size to store current computing row
+ */
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        //Bottom up approach
+        for(int i=triangle.size()-2;i>=0;i--){
+            System.out.println(triangle.get(i));
+            for(int j=0;j<triangle.get(i).size();j++){
+                int min = Math.min(triangle.get(i+1).get(j),triangle.get(i+1).get(j+1));
+                triangle.get(i).set(j,min+triangle.get(i).get(j));
+            }
+        }
+        return triangle.get(0).get(0);
+    }
+} 

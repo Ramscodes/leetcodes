@@ -1,0 +1,21 @@
+/* This is a simple problem where we need to form a pascal triangle
+ * Look at the problem solution in the link 
+		->https://leetcode.com/problems/pascals-triangle/description/
+ * In the solution we just add the 1 in first position of array every time and
+ *     and add the middle values to form the pascal triangle 
+ */
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+    List<List<Integer>> allrows = new ArrayList<List<Integer>>();
+	ArrayList<Integer> row = new ArrayList<Integer>();
+	for(int i=0;i<numRows;i++)
+	{
+		row.add(0, 1);
+		for(int j=1;j<row.size()-1;j++)
+			row.set(j, row.get(j)+row.get(j+1));
+        System.out.println(row);
+		allrows.add(new ArrayList<Integer>(row));
+	}
+	return allrows;
+    }
+} 
