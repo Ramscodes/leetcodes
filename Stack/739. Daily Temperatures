@@ -1,0 +1,26 @@
+//The link to the leetcode problem -https://leetcode.com/problems/daily-temperatures/description/
+/* This problem is finding out the next warmer temperature for a day
+ * 		where temperatures of a day is given as an array
+ * We can solve this problem by using two pointers concept but it takes more time
+ * So here in the solution we used a stack to solve this problem
+ * 		-> we will push the index of the current temperature into stack
+ *		-> we will pop the stack if we find the temperature greater than previous temperature
+ */
+
+
+class Solution {
+    public int[] dailyTemperatures(int[] temp) {
+
+        Stack<Integer> stack = new Stack<>();
+        int[] res = new int[temp.length];
+        for(int i=0;i<temp.length;i++){
+            while(!stack.isEmpty()&&temp[i]>temp[stack.peek()]){
+                int index = stack.pop();
+                res[index] = i - index;
+            }
+            stack.push(i);
+        }
+        return res;
+        
+    }
+}
