@@ -13,7 +13,7 @@ So we change the low to mid+1.
 
 # Complexity
 
-- Time complexity : o(log n)
+- Time complexity : O(log n)
 - Space complexity : O(1)
 
 # code
